@@ -117,7 +117,8 @@ namespace Architecture_Reminder.ViewModels
                 _reminders = new List<Reminder>();
                 List<Reminder> toBeDeleted = new List<Reminder>();
                 Reminder curr_rem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
-                foreach (var rem in ReminderServiceWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
+                //foreach (var rem in ReminderServiceWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
+                foreach(var rem in DBManager.GetUserByLogin(StationManager.CurrentUser.Login).Reminders)
                 {
                     if (rem.CompareTo(curr_rem) < 0)
                         toBeDeleted.Add(rem);

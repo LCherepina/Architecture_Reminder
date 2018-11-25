@@ -22,3 +22,6 @@ C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderService\obj\Debu
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderService\obj\Debug\ReminderService.csproj.CopyComplete
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderService\obj\Debug\ReminderService.exe
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderService\obj\Debug\ReminderService.pdb
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderService\bin\Debug\ReminderService.exe.config
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderService\obj\Debug\ReminderService.exe
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderService\obj\Debug\ReminderService.pdb
