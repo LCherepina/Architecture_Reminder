@@ -1,0 +1,3 @@
+C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\DBAdapter\obj\Debug\DBAdapter.csprojResolveAssemblyReference.cache
+C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\DBAdapter\obj\Debug\Architecture_Reminder.Migrations.NewReminderDBv1.resources
+C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\DBAdapter\obj\Debug\DBAdapter.csproj.GenerateResource.Cache

@@ -1,0 +1,14 @@
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.pdb
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\DBModels.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\Tools.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\DBModels.pdb
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\DBModels.dll.config
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.xml
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\bin\Debug\Tools.pdb
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csprojResolveAssemblyReference.cache
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csproj.CoreCompileInputs.cache
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csproj.CopyComplete
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.pdb
