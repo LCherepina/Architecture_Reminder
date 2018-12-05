@@ -1,6 +1,4 @@
-﻿
-
-using Architecture_Reminder.Views.Authentication;
+﻿using Architecture_Reminder.Views.Authentication;
 using Architecture_Reminder.Views;
 using System;
 

@@ -1,10 +1,9 @@
-﻿using Architecture_Reminder.Models;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Architecture_Reminder.Annotations;
-using Architecture_Reminder.DBAdapter;
 using Architecture_Reminder.DBModels;
+using Architecture_Reminder.Managers;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -28,7 +27,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemDate = value;
-                EntityWrapper.SaveReminder(_currentReminder);
+                DBManager.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }
@@ -51,7 +50,7 @@ namespace Architecture_Reminder.ViewModels
                    _currentReminder.RemTimeHour = _currentReminder.RemTimeHour;
                    OnPropertyChanged();
                 }
-                EntityWrapper.SaveReminder(_currentReminder);
+                DBManager.SaveReminder(_currentReminder);
             }
         }
         public int RemTimeMinutes
@@ -80,7 +79,7 @@ namespace Architecture_Reminder.ViewModels
                                  DispatcherPriority.ApplicationIdle);
                      }
                      */
-                EntityWrapper.SaveReminder(_currentReminder);
+                DBManager.SaveReminder(_currentReminder);
             }
         }
 
@@ -90,7 +89,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemText = value;
-                EntityWrapper.SaveReminder(_currentReminder);
+                DBManager.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }

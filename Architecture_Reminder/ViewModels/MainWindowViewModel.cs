@@ -3,10 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using Architecture_Reminder.Annotations;
 using Architecture_Reminder.Managers;
-
 using Architecture_Reminder.Tools;
-using Architecture_Reminder.Properties;
-
 
 namespace Architecture_Reminder.ViewModels
 {

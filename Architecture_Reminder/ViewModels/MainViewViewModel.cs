@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -10,10 +9,8 @@ using Architecture_Reminder.Tools;
 using System.Threading;
 using System.Threading.Tasks;
 using Architecture_Reminder.DBModels;
-using Architecture_Reminder.DBAdapter;
 using Architecture_Reminder.Managers;
 using Architecture_Reminder.Annotations;
-using Architecture_Reminder.ServiceInterface;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -78,6 +75,10 @@ namespace Architecture_Reminder.ViewModels
                 return _reminders;
                 //return StationManager.CurrentUser.Reminders;
             }
+            set
+            {
+                _reminders = value;
+            }
         }
 
         public int SelectedReminderIndex
@@ -114,25 +115,25 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 ////Thread.Sleep(200);
-                _reminders = new List<Reminder>();
+                Reminders = new List<Reminder>();
                 List<Reminder> toBeDeleted = new List<Reminder>();
                 Reminder curr_rem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
-                //foreach (var rem in ReminderServiceWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
                 foreach(var rem in DBManager.GetUserByLogin(StationManager.CurrentUser.Login).Reminders)
                 {
                     if (rem.CompareTo(curr_rem) < 0)
                         toBeDeleted.Add(rem);
                     else
                     {
-                        _reminders.Add(rem);
+                        Reminders.Add(rem);
                         RunReminderExecute(rem.Guid);
                     }
                 }
-                if (_reminders.Count != 0)
-                    SelectedReminder = _reminders[0];
+                if (Reminders.Count != 0)
+                    SelectedReminder = Reminders[0];
 
                 foreach (var rem in toBeDeleted)
                     DBManager.DeleteReminder(rem);
+                
                 return true;
             });
             OnPropertyChanged();
@@ -147,10 +148,10 @@ namespace Architecture_Reminder.ViewModels
 
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
-                _reminders.Add(reminder);
+                Reminders.Add(reminder);
                 SelectedReminder = reminder;
                 DBManager.AddReminder(reminder);
-                _reminders.Sort();
+                Reminders.Sort();
                 RunReminderExecute(reminder.Guid);
                 return true;
             });
@@ -180,8 +181,8 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 Thread.Sleep(100);
-        //        StationManager.CurrentUser.LogOut = true;
-        //        DBManager.UpdateUser(StationManager.CurrentUser);
+                //        StationManager.CurrentUser.LogOut = true;
+                //        DBManager.UpdateUser(StationManager.CurrentUser);
                 StationManager.CurrentUser = null;
                 return true;
             });
@@ -211,7 +212,7 @@ namespace Architecture_Reminder.ViewModels
             {
                 int i = -1;
                 int n = -1;
-                foreach (var rem in _reminders)
+                foreach (var rem in Reminders)
                 {
                     n++;
                     if (rem.Guid == g)
@@ -220,7 +221,7 @@ namespace Architecture_Reminder.ViewModels
                         break;
                     }
                 }
-                _reminders.RemoveAt(i);
+                Reminders.RemoveAt(i);
                 DBManager.DeleteReminder(r);
             }
             OnPropertyChanged(); 
@@ -233,8 +234,6 @@ namespace Architecture_Reminder.ViewModels
             myThread.IsBackground = true;
             myThread.Start(g);
             _myThreads.Add(myThread);
-            
-            //OnPropertyChanged();
         }
 
         
@@ -258,7 +257,6 @@ namespace Architecture_Reminder.ViewModels
                     return;
                 }
                 Thread.Sleep(1000);
-               // OnPropertyChanged();
             }
         }
 

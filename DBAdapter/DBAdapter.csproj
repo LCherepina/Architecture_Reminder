@@ -52,18 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityWrapper.cs" />
-    <Compile Include="Migrations\201811221454036_NewReminderDB-v1.cs" />
-    <Compile Include="Migrations\201811221454036_NewReminderDB-v1.Designer.cs">
-      <DependentUpon>201811221454036_NewReminderDB-v1.cs</DependentUpon>
+    <Compile Include="Migrations\201812051103372_DBReminderMigr.cs" />
+    <Compile Include="Migrations\201812051103372_DBReminderMigr.Designer.cs">
+      <DependentUpon>201812051103372_DBReminderMigr.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReminderDBContext.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811221454036_NewReminderDB-v1.resx">
-      <DependentUpon>201811221454036_NewReminderDB-v1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBModels\DBModels.csproj">
@@ -72,8 +67,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812051103372_DBReminderMigr.resx">
+      <DependentUpon>201812051103372_DBReminderMigr.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

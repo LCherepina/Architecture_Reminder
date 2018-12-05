@@ -90,7 +90,7 @@ namespace Architecture_Reminder.DBModels
         public List<Reminder> Reminders
         {
             get { return _reminders; }
-            private set { _reminders = value; }
+            /*private */set { _reminders = value; }
         }
         #endregion
 

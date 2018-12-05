@@ -12,3 +12,14 @@ C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csproj.CopyComplete
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.dll
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.pdb
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.pdb
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\DBModels.dll
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.dll
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Tools.dll
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\DBModels.pdb
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.xml
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Tools.pdb
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csprojResolveAssemblyReference.cache
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.pdb

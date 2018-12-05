@@ -7,13 +7,13 @@ namespace Architecture_Reminder.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NewReminderDBv1 : IMigrationMetadata
+    public sealed partial class DBReminderMigr : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NewReminderDBv1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DBReminderMigr));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811221454036_NewReminderDB-v1"; }
+            get { return "201812051103372_DBReminderMigr"; }
         }
         
         string IMigrationMetadata.Source
