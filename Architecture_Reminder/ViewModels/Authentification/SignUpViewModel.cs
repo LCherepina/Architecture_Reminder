@@ -1,13 +1,10 @@
 ﻿using Architecture_Reminder.Managers;
-using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Architecture_Reminder.Properties;
 using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.ViewModels.Authentification
@@ -114,11 +111,6 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 try
                 {
                     var addr = new System.Net.Mail.MailAddress(_email);
-                    //if (DBManager.UserExist(_login))
-                    //{
-                    //  MessageBox.Show("User with login " + _login + " already exist.\n");
-                    // return;
-                    //}
                 }
                 catch (Exception e)
                 {
@@ -175,37 +167,6 @@ namespace Architecture_Reminder.ViewModels.Authentification
         {
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
-     /*   private void SignUpExecute(object obj)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(_email);
-                //if (DBManager.UserExist(_login))
-                //{
-                  //  MessageBox.Show("User with login " + _login + " already exist.\n");
-                   // return;
-                //}
-            }catch(Exception e)
-            {
-                MessageBox.Show("Failed to validate data. " + e.Message);
-                return;
-            }
-            
-            try
-            {
-                User user = new User(_login, _password, _firstName, _lastName, _email);
-                DBManager.AddUser(user);
-                StationManager.CurrentUser = user;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Failed to create user." + e.Message);
-                return;
-            }
-            MessageBox.Show("User with login " + _login + " is successfuly created!");
-            NavigationManager.Instance.Navigate(ModesEnum.Main);
-        }
-*/
 
         public event PropertyChangedEventHandler PropertyChanged;
         internal virtual void OnPropertyChanged(string propertyName)

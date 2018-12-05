@@ -25,11 +25,6 @@ namespace Architecture_Reminder.DBModels
         private string _lastName;
         [DataMember]
         private string _email;
-        /* [DataMember]
-         private DateTime _lastLoginDate;
-         [DataMember]
-         private bool _logOut;
-         */
         [DataMember]
         private List<Reminder> _reminders;
         #endregion
@@ -56,22 +51,6 @@ namespace Architecture_Reminder.DBModels
             get { return _password; }
             private set { _password = value; }
         }
-        /*
-        public DateTime LastLoginDate
-        {
-            get { return _lastLoginDate; }
-            set { _lastLoginDate = value; }
-        }
-
-        public bool LogOut
-        {
-            get
-            {
-                return _logOut;
-            }
-            set { _logOut = value; }
-        }*/
-
         public string FirstName
         {
             get { return _firstName; }
@@ -105,8 +84,6 @@ namespace Architecture_Reminder.DBModels
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
-            //_lastLoginDate = DateTime.Now;
-            //_logOut = false;
             _reminders = new List<Reminder>();
           
         }
@@ -182,12 +159,6 @@ namespace Architecture_Reminder.DBModels
                 Property(p => p.Password)
                     .HasColumnName("Password")
                     .IsRequired();
-               /* Property(p => p.LastLoginDate)
-                    .HasColumnName("LastLoginDate")
-                    .IsRequired();
-                Property(p => p.LogOut)
-                    .HasColumnName("LogOut")
-                    .IsRequired();*/
 
                 HasMany(s => s.Reminders)
                     .WithRequired(w => w.User)

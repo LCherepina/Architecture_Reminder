@@ -6,38 +6,38 @@
              xmlns:local="clr-namespace:Architecture_Reminder.Views"
              mc:Ignorable="d" 
            >
-    <ScrollViewer VerticalScrollBarVisibility="Auto" >
-        <Grid Name="MainGrid1" Height="Auto" ScrollViewer.CanContentScroll="True"
-          ScrollViewer.VerticalScrollBarVisibility="Auto" >
-            <Grid Name="Grid11">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"></ColumnDefinition>
-                    <ColumnDefinition Name="Rems" Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions >
+    <Grid Name="MainGrid1" Height="Auto">
+        <Grid Name="Grid11" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Name="Rems" Width="*" />
+            </Grid.ColumnDefinitions>
 
-                    <RowDefinition Height="70"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>
+            <Grid.RowDefinitions >
 
-                </Grid.RowDefinitions>
-                <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
-                <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
-                <Button Content="Run" FontWeight="Bold" Command="{Binding RunReminderCommand}"  Grid.Row="2" Grid.Column="0" Margin="6"></Button>
-                <Button Content="Log Out" FontWeight="Bold" Command="{Binding LogOutCommand}"  Grid.Row="3" Grid.Column="0" Margin="6"></Button>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
 
-            </Grid>
-
-            <Grid Name="MainGrid" Margin="60,0,0,0">
-
-                <ListBox Name="ListBoxMain" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedReminderIndex}">
-                </ListBox>
-            </Grid>
-
+            </Grid.RowDefinitions>
+            <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6,10,6,10" ></Button>
+            <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6,10,6,10"></Button>
+            <Button Content="Sort" FontWeight="Bold" Command="{Binding SortReminderCommand}"  Grid.Row="2" Grid.Column="0" Margin="6,10,6,10"></Button>
+            <Button Content="Log Out" FontWeight="Bold" Command="{Binding LogOutCommand}"  Grid.Row="7" Grid.Column="0" Margin="5,10,5,10"></Button>
         </Grid>
 
-    </ScrollViewer>
+
+        <Grid Name="MainGrid" Margin="70,10,0,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox Name="ListBoxMain" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedReminderIndex}">
+            </ListBox>
+        </Grid>
+
+    </Grid>
 
 </UserControl>

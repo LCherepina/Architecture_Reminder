@@ -10,7 +10,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,8 +27,8 @@
         <ComboBox Name="ComboBoxMinutes" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" ItemsSource="{Binding FillMinutes}" SelectedIndex="{Binding RemTimeMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=5}">
 
         </ComboBox>
-        <TextBox Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0 " Height="50"  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
-                 Text="{Binding RemText, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0 " Height="60" TextWrapping="Wrap" AcceptsReturn="True" IsUndoEnabled="True"
+                 Text="{Binding RemText, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
     </Grid>
 </UserControl>

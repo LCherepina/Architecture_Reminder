@@ -14,7 +14,6 @@ namespace Architecture_Reminder.ViewModels
         private readonly Reminder _currentReminder;
         private string[] _hours;
         private string[] _minutes;
-        private ValueType val;
 
         #endregion
 
@@ -63,21 +62,12 @@ namespace Architecture_Reminder.ViewModels
                 {
                     _currentReminder.RemTimeMin = value;
                     OnPropertyChanged();
-                    // Console.WriteLine(value);   
                 }
                else
                {
                    _currentReminder.RemTimeMin = oldTime;
                    OnPropertyChanged();
                 }
-
-                /*     if (value < DateTime.Now.Minute && _currentReminder.RemDate < DateTime.Today &&
-                           _currentReminder.RemTimeHour <= DateTime.Now.Hour)
-                     {
-                         Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => RemTimeMinutes = oldTime),
-                                 DispatcherPriority.ApplicationIdle);
-                     }
-                     */
                 DBManager.SaveReminder(_currentReminder);
             }
         }
@@ -131,11 +121,7 @@ namespace Architecture_Reminder.ViewModels
         {
             _currentReminder = reminder;
         }
-
-        public ReminderConfigurationViewModel()
-        {
-        }
-
+        
         #endregion
         
         #region EventsAndHandlers

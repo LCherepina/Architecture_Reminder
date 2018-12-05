@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Architecture_Reminder.Tools;
 using Architecture_Reminder.Managers;
 using Architecture_Reminder.ViewModels;
@@ -19,7 +18,6 @@ namespace Architecture_Reminder
             MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
             DataContext = mainWindowViewModel;
             mainWindowViewModel.StartApplication();
-        //    navigationModel.Navigate(ModesEnum.SignIn);
         }
 
         public ContentControl ContentControl

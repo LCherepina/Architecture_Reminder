@@ -16,7 +16,6 @@ namespace Architecture_Reminder.Views
     {
         private int _countChildren;
         private MainViewViewModel _mainViewViewModel;
-        //private ReminderConfigurationViewModel _reminderConfigurationModel;
         private ReminderConfigurationView _currentReminderConfigurationView;
 
         public MainView()
@@ -30,8 +29,6 @@ namespace Architecture_Reminder.Views
             Visibility = Visibility.Visible;
             _mainViewViewModel = new MainViewViewModel();
             _mainViewViewModel.ReminderChanged += OnReminderChanged;
-            //_reminderConfigurationModel = new ReminderConfigurationViewModel();
-            //_reminderConfigurationModel.ReminderChanged += OnReminderChanged;
             DataContext = _mainViewViewModel;
         }
 
@@ -39,7 +36,7 @@ namespace Architecture_Reminder.Views
         {
             Dispatcher.BeginInvoke(new ThreadStart(delegate {
                 ListBoxMain.Items.Clear();
-
+                _mainViewViewModel.Reminders.Sort();
                 _countChildren = _mainViewViewModel.Reminders.Count;
 
                 for (int i = 0; i < (_countChildren); i++)

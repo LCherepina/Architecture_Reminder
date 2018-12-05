@@ -20,14 +20,13 @@ namespace Architecture_Reminder.ViewModels
 
         private int _indexSelected;
         private Reminder _selectedReminder;
-        //private MainView _mainView;
         private List<Reminder> _reminders;
         private List<Thread> _myThreads;
 
         #region Commands
         private ICommand _addReminderCommand;
         private ICommand _deleteReminderCommand;
-        //private ICommand _runReminderCommand;
+        private ICommand _sortReminderCommand;
         private ICommand _logOutCommand;
         #endregion
         #endregion
@@ -49,14 +48,14 @@ namespace Architecture_Reminder.ViewModels
                 return _deleteReminderCommand ?? (_deleteReminderCommand = new RelayCommand<KeyEventArgs>(DeleteReminderExecute));
             }
         }
-        /*
-        public ICommand RunReminderCommand
+        
+        public ICommand SortReminderCommand
         {
             get
             {
-                return _runReminderCommand ?? (_runReminderCommand = new RelayCommand<object>(RunReminderExecute));
+                return _sortReminderCommand ?? (_sortReminderCommand = new RelayCommand<object>(SortReminderExecute));
             }
-        }*/
+        }
 
         public ICommand LogOutCommand
         {
@@ -115,28 +114,40 @@ namespace Architecture_Reminder.ViewModels
             _myThreads = new List<Thread>();
             var result = await Task.Run(() =>
             {
-                ////Thread.Sleep(200);
                 Reminders = new List<Reminder>();
-                List<Reminder> toBeDeleted = new List<Reminder>();
+                //List<Reminder> toBeDeleted = new List<Reminder>();
                 Reminder curr_rem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
                 foreach(var rem in DBManager.GetUserByLogin(StationManager.CurrentUser.Login).Reminders)
                 {
                     if (rem.CompareTo(curr_rem) < 0)
-                        toBeDeleted.Add(rem);
-                    else
-                    {
+                        rem.IsHappened = true;
+                        //toBeDeleted.Add(rem);
+                    //else
+                    //{
                         Reminders.Add(rem);
                         RunReminderExecute(rem.Guid);
-                    }
+                    //}
                 }
                 if (Reminders.Count != 0)
                     SelectedReminder = Reminders[0];
 
-                foreach (var rem in toBeDeleted)
-                    DBManager.DeleteReminder(rem);
+                //foreach (var rem in toBeDeleted)
+                  //  DBManager.DeleteReminder(rem);
                 
                 return true;
             });
+            OnPropertyChanged();
+        }
+
+        private async void SortReminderExecute(object obj)
+        {
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() =>
+            {
+                Reminders.Sort();
+                return true;
+            });
+            LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
         }
 
@@ -145,14 +156,12 @@ namespace Architecture_Reminder.ViewModels
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
-                //   Thread.Sleep(300);
-
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
                 Reminders.Add(reminder);
                 SelectedReminder = reminder;
                 DBManager.AddReminder(reminder);
-                Reminders.Sort();
+                //Reminders.Sort();
                 RunReminderExecute(reminder.Guid);
                 return true;
             });
@@ -169,7 +178,7 @@ namespace Architecture_Reminder.ViewModels
                 if (SelectedReminderIndex < 0) return false;
                 DBManager.DeleteReminder(Reminders.ElementAt(SelectedReminderIndex));
                 Reminders.RemoveAt(SelectedReminderIndex);
-                Reminders.Sort();
+                //Reminders.Sort();
                 return true;
             });
             LoaderManager.Instance.HideLoader();
@@ -182,8 +191,6 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 Thread.Sleep(100);
-                //        StationManager.CurrentUser.LogOut = true;
-                //        DBManager.UpdateUser(StationManager.CurrentUser);
                 StationManager.CurrentUser = null;
                 return true;
             });
@@ -192,7 +199,6 @@ namespace Architecture_Reminder.ViewModels
             {
                 foreach (Thread t in _myThreads)
                     t.Abort();
-               // SaveRemindersToDB();
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
             }
         }
@@ -207,6 +213,7 @@ namespace Architecture_Reminder.ViewModels
             return null;
         }
         
+        /*
         private void DeleteReminderByGuid(Guid g)
         {
             Reminder r = GetReminderByGuid(g);
@@ -227,7 +234,7 @@ namespace Architecture_Reminder.ViewModels
                 DBManager.DeleteReminder(r);
             }
             OnPropertyChanged(); 
-        }
+        }*/
 
 
         private void RunReminderExecute(Guid g)
@@ -249,24 +256,26 @@ namespace Architecture_Reminder.ViewModels
                 if (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin == DateTime.Now.Minute)
                 {
                     MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + " " + r.RemText);
-                    DeleteReminderByGuid((Guid)g);
+                    GetReminderByGuid((Guid)g).IsHappened = true;
+                    //DeleteReminderByGuid((Guid)g);
                     return;
                 }
                 else if (r.RemDate < DateTime.Today.Date || (r.RemDate == DateTime.Today.Date && r.RemTimeHour < DateTime.Now.Hour)
                || (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin < DateTime.Now.Minute))
                 {
-                    DeleteReminderByGuid((Guid)g);
+                    GetReminderByGuid((Guid)g).IsHappened = true;
+                    //DeleteReminderByGuid((Guid)g);
                     return;
                 }
                 Thread.Sleep(1000);
             }
         }
 
-        public void SaveRemindersToDB()
+        /*public void SaveRemindersToDB()
         {
             foreach (Reminder r in Reminders)
                 DBManager.SaveReminder(r);
-        }
+        }*/
 
 
         #region EventsAndHandlers

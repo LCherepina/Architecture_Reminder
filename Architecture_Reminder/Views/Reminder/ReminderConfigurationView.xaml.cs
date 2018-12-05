@@ -20,11 +20,14 @@ namespace Architecture_Reminder.Views.Reminder
         #endregion
         public ReminderConfigurationView(DBModels.Reminder reminder)
         {
-            //_id = reminder.MyId;
             InitializeComponent();
            var reminderModel = new ReminderConfigurationViewModel(reminder);
             DataContext = reminderModel;
         }
 
+        private void TextBox_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+
+        }
     }
 }

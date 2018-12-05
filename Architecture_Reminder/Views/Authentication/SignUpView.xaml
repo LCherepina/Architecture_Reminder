@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:controls="clr-namespace:Architecture_Reminder.Tools.Controls"
       mc:Ignorable="d" 
-      Height="350" MinWidth="370">
+      Height="450" MinWidth="400">
 
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Margin="40">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>

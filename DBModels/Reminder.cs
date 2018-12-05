@@ -24,6 +24,8 @@ namespace Architecture_Reminder.DBModels
         private string _text;
         [DataMember]
         private User _user;
+        [DataMember]
+        private bool _isHappened;
         #endregion
 
         #region Properties
@@ -64,6 +66,12 @@ namespace Architecture_Reminder.DBModels
             get { return _userGuid; }
             private set { _userGuid = value; }
         }
+
+        public bool IsHappened
+        {
+            get { return _isHappened; }
+            set { _isHappened = value; }
+        }
         #endregion
 
         #region Constructor
@@ -78,6 +86,7 @@ namespace Architecture_Reminder.DBModels
             _user = user;
             _userGuid = user.Guid;
             //user.Reminders.Add(this);
+            _isHappened = false;
             user.Reminders.Sort();
         }
 

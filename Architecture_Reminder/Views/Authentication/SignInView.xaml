@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:controls="clr-namespace:Architecture_Reminder.Tools.Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="300" d:DesignWidth="400"
              x:ClassModifier="internal">
 
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Margin="50">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="70"/>
