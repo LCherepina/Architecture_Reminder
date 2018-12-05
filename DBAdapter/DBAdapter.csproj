@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityWrapper.cs" />
-    <Compile Include="Migrations\201812051103372_DBReminderMigr.cs" />
-    <Compile Include="Migrations\201812051103372_DBReminderMigr.Designer.cs">
-      <DependentUpon>201812051103372_DBReminderMigr.cs</DependentUpon>
+    <Compile Include="Migrations\201812051807334_ReminderDBMigration.cs" />
+    <Compile Include="Migrations\201812051807334_ReminderDBMigration.Designer.cs">
+      <DependentUpon>201812051807334_ReminderDBMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812051103372_DBReminderMigr.resx">
-      <DependentUpon>201812051103372_DBReminderMigr.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812051807334_ReminderDBMigration.resx">
+      <DependentUpon>201812051807334_ReminderDBMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

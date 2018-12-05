@@ -25,10 +25,11 @@ namespace Architecture_Reminder.DBModels
         private string _lastName;
         [DataMember]
         private string _email;
-        [DataMember]
-        private DateTime _lastLoginDate;
-        [DataMember]
-        private bool _logOut;
+        /* [DataMember]
+         private DateTime _lastLoginDate;
+         [DataMember]
+         private bool _logOut;
+         */
         [DataMember]
         private List<Reminder> _reminders;
         #endregion
@@ -55,7 +56,7 @@ namespace Architecture_Reminder.DBModels
             get { return _password; }
             private set { _password = value; }
         }
-
+        /*
         public DateTime LastLoginDate
         {
             get { return _lastLoginDate; }
@@ -69,7 +70,7 @@ namespace Architecture_Reminder.DBModels
                 return _logOut;
             }
             set { _logOut = value; }
-        }
+        }*/
 
         public string FirstName
         {
@@ -90,7 +91,7 @@ namespace Architecture_Reminder.DBModels
         public List<Reminder> Reminders
         {
             get { return _reminders; }
-            /*private */set { _reminders = value; }
+            /*private*/ set { _reminders = value; }
         }
         #endregion
 
@@ -104,8 +105,8 @@ namespace Architecture_Reminder.DBModels
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
-            _lastLoginDate = DateTime.Now;
-            _logOut = false;
+            //_lastLoginDate = DateTime.Now;
+            //_logOut = false;
             _reminders = new List<Reminder>();
           
         }
@@ -181,12 +182,12 @@ namespace Architecture_Reminder.DBModels
                 Property(p => p.Password)
                     .HasColumnName("Password")
                     .IsRequired();
-                Property(p => p.LastLoginDate)
+               /* Property(p => p.LastLoginDate)
                     .HasColumnName("LastLoginDate")
                     .IsRequired();
                 Property(p => p.LogOut)
                     .HasColumnName("LogOut")
-                    .IsRequired();
+                    .IsRequired();*/
 
                 HasMany(s => s.Reminders)
                     .WithRequired(w => w.User)

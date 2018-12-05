@@ -83,6 +83,8 @@ namespace Architecture_Reminder.Managers
 
         public static void CloseApp()
         {
+            foreach (Reminder r in CurrentUser.Reminders)
+                DBManager.SaveReminder(r);
             MessageBox.Show("ShutDown");
             Environment.Exit(1);
         }

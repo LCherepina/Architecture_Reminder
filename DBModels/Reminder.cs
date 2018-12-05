@@ -77,7 +77,7 @@ namespace Architecture_Reminder.DBModels
             _text = text;
             _user = user;
             _userGuid = user.Guid;
-            user.Reminders.Add(this);
+            //user.Reminders.Add(this);
             user.Reminders.Sort();
         }
 

@@ -3,7 +3,7 @@ namespace Architecture_Reminder.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBReminderMigr : DbMigration
+    public partial class ReminderDBMigration : DbMigration
     {
         public override void Up()
         {
@@ -29,8 +29,6 @@ namespace Architecture_Reminder.Migrations
                         Guid = c.Guid(nullable: false),
                         Login = c.String(nullable: false),
                         Password = c.String(nullable: false),
-                        LastLoginDate = c.DateTime(nullable: false),
-                        LogOut = c.Boolean(nullable: false),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
                         Email = c.String(),

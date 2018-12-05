@@ -40,7 +40,7 @@ namespace Architecture_Reminder.DBAdapter
                 return context.Users.Where(u => u.Reminders.All(r => r.Guid != reminderGuid)).ToList();
             }
         }
-
+        /*
         public static User GetLastUserByDate()
         {
             using (var context = new ReminderDBContext())
@@ -61,7 +61,7 @@ namespace Architecture_Reminder.DBAdapter
                     user = null;
                 return  user;
             }
-        }
+        }*/
 
         public static void AddUser(User user)
         {
@@ -90,14 +90,14 @@ namespace Architecture_Reminder.DBAdapter
                 context.SaveChanges();
             }
         }
-
+        
         public static void SaveUser(User user)
         {
             using (var context = new ReminderDBContext())
             {
                 context.Users.Attach(user);
-                context.Entry(user).Property(x => x.LastLoginDate).IsModified = true;
-                context.Entry(user).Property(x => x.LogOut).IsModified = true;
+                //context.Entry(user).Property(x => x.LastLoginDate).IsModified = true;
+                //context.Entry(user).Property(x => x.LogOut).IsModified = true;
                 context.SaveChanges();
             }
         }

@@ -78,6 +78,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _reminders = value;
+                //StationManager.CurrentUser.Reminders = value;
             }
         }
 
@@ -191,6 +192,7 @@ namespace Architecture_Reminder.ViewModels
             {
                 foreach (Thread t in _myThreads)
                     t.Abort();
+               // SaveRemindersToDB();
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
             }
         }
@@ -258,6 +260,12 @@ namespace Architecture_Reminder.ViewModels
                 }
                 Thread.Sleep(1000);
             }
+        }
+
+        public void SaveRemindersToDB()
+        {
+            foreach (Reminder r in Reminders)
+                DBManager.SaveReminder(r);
         }
 
 

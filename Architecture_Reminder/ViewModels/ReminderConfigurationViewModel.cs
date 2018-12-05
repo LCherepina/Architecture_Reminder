@@ -43,7 +43,6 @@ namespace Architecture_Reminder.ViewModels
 
                     _currentReminder.RemTimeHour = value;
                     OnPropertyChanged();
-                   // Console.WriteLine(value);
                 }
                else
                {
