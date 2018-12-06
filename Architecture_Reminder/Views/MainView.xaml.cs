@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
 using Architecture_Reminder.ViewModels;
-using Architecture_Reminder.Views.Reminder;
-using Architecture_Reminder.Models;
 using System.Threading;
+using System;
+using Architecture_Reminder.DBModels;
+using Architecture_Reminder.Views.Reminder;
 
 namespace Architecture_Reminder.Views
 {
@@ -43,6 +43,14 @@ namespace Architecture_Reminder.Views
                 {
                     _currentReminderConfigurationView =
                         new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
+                    DBModels.Reminder curr_rem = new DBModels.Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
+                    if (_mainViewViewModel.Reminders.ElementAt(i).CompareTo(curr_rem) <= 0)
+                    {
+                        _currentReminderConfigurationView.DatePicker.IsEnabled = false;
+                        _currentReminderConfigurationView.ComboBoxHours.IsEnabled = false;
+                        _currentReminderConfigurationView.ComboBoxMinutes.IsEnabled = false;
+                        _currentReminderConfigurationView.Text.IsEnabled = false;
+                    }
                     ListBoxMain.Items.Add(_currentReminderConfigurationView);
                 }
             }));

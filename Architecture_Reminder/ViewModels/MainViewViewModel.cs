@@ -115,24 +115,18 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 Reminders = new List<Reminder>();
-                //List<Reminder> toBeDeleted = new List<Reminder>();
                 Reminder curr_rem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
                 foreach(var rem in DBManager.GetUserByLogin(StationManager.CurrentUser.Login).Reminders)
                 {
                     if (rem.CompareTo(curr_rem) < 0)
                         rem.IsHappened = true;
-                        //toBeDeleted.Add(rem);
-                    //else
-                    //{
-                        Reminders.Add(rem);
+
+                    Reminders.Add(rem);
+                    if (!rem.IsHappened)
                         RunReminderExecute(rem.Guid);
-                    //}
                 }
                 if (Reminders.Count != 0)
                     SelectedReminder = Reminders[0];
-
-                //foreach (var rem in toBeDeleted)
-                  //  DBManager.DeleteReminder(rem);
                 
                 return true;
             });
@@ -255,15 +249,18 @@ namespace Architecture_Reminder.ViewModels
                 
                 if (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin == DateTime.Now.Minute)
                 {
-                    MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + " " + r.RemText);
+                    MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + "\n" +
+                        + r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n " + r.RemText );
                     GetReminderByGuid((Guid)g).IsHappened = true;
                     //DeleteReminderByGuid((Guid)g);
+                    OnPropertyChanged();
                     return;
                 }
                 else if (r.RemDate < DateTime.Today.Date || (r.RemDate == DateTime.Today.Date && r.RemTimeHour < DateTime.Now.Hour)
                || (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin < DateTime.Now.Minute))
                 {
                     GetReminderByGuid((Guid)g).IsHappened = true;
+                    OnPropertyChanged();
                     //DeleteReminderByGuid((Guid)g);
                     return;
                 }
