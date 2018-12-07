@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Architecture_Reminder", "Architecture_Reminder\Architecture_Reminder.csproj", "{E833A5FC-814A-4553-9E31-03F9557161A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C0B79F1D-AB45-4640-BE8D-4107783B800F} = {C0B79F1D-AB45-4640-BE8D-4107783B800F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBAdapter", "DBAdapter\DBAdapter.csproj", "{5619AF0F-420C-4FC0-AE2A-C2B2F5709A0F}"
 EndProject

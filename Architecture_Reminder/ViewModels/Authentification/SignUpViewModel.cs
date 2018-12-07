@@ -115,7 +115,8 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 catch (Exception e)
                 {
                     MessageBox.Show("Failed to validate data. " + e.Message);
-                    return false;
+                    Logger.Log("SignUp Email is not valid");
+                    return 1;
                 }
 
                 try
@@ -129,11 +130,28 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 catch (Exception e)
                 {
                     MessageBox.Show("Failed to create user." + e.Message);
-                    return false;
+                    Logger.Log($"SignUp User exist", e);
+                    return 2;
                 }
                 MessageBox.Show("User with login " + _login + " is successfuly created!");
-                return true;
+                Logger.Log("SignUp New user created");
+                return 0;
             });
+            LoaderManager.Instance.HideLoader();
+            if (result == 1)
+            {
+                _email = "";
+                OnPropertyChanged("Email");
+            }else if (result == 2)
+                CleanAllFields();
+            if (result == 0) {
+                CleanAllFields();
+                NavigationManager.Instance.Navigate(ModesEnum.Main);
+            }
+        }
+
+        private void CleanAllFields()
+        {
             _login = "";
             _password = "";
             _firstName = "";
@@ -144,9 +162,6 @@ namespace Architecture_Reminder.ViewModels.Authentification
             OnPropertyChanged("FirstName");
             OnPropertyChanged("LastName");
             OnPropertyChanged("Email");
-            LoaderManager.Instance.HideLoader();
-            if (result)
-                NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
 
         private void CloseExecute(object obj)

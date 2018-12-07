@@ -161,6 +161,7 @@ namespace Architecture_Reminder.ViewModels
             });
             LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
+            Logger.Log("Create new reminder");
         }
 
         private async void DeleteReminderExecute(KeyEventArgs args)
@@ -177,6 +178,7 @@ namespace Architecture_Reminder.ViewModels
             });
             LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
+            Logger.Log("Delete reminder");
         }
 
         private async void LogOutExecute(object obj)
@@ -252,6 +254,7 @@ namespace Architecture_Reminder.ViewModels
                     MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + "\n" +
                         + r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n " + r.RemText );
                     GetReminderByGuid((Guid)g).IsHappened = true;
+                    Logger.Log("Reminder happened");
                     //DeleteReminderByGuid((Guid)g);
                     OnPropertyChanged();
                     return;

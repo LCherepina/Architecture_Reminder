@@ -211,6 +211,10 @@
       <Project>{1AB04738-2ECA-47E5-8EC0-D9D20CBCE26A}</Project>
       <Name>ReminderServiceInterface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{C0B79F1D-AB45-4640-BE8D-4107783B800F}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,6 +28,7 @@ namespace Architecture_Reminder.Tools
             try
             {
                 FileInfo file = new FileInfo(filePath);
+                Console.WriteLine(filePath);
                 if (!file.Directory.Exists)
                 {
                     file.Directory.Create();

@@ -101,12 +101,14 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 catch (Exception e)
                 {
                     MessageBox.Show("Failed to get user with login +" + _login + ".\n" + e.Message);
+                    Logger.Log($"SignIn Failed to get user ", e);
                     return false;
                 }
 
                 if (currentUser == null)
                 {
                     MessageBox.Show("User with login " + _login + " doesn't exist!");
+                    Logger.Log("SignIn User doesnt exist");
                     return false;
                 }
 
@@ -115,12 +117,14 @@ namespace Architecture_Reminder.ViewModels.Authentification
                     if (!currentUser.CheckPassword(_password))
                     {
                         MessageBox.Show("Wrong password!");
+                        Logger.Log("Wrong password");
                         return false;
                     }
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Failed to validate password!\n" + e.Message);
+                    Logger.Log($"SignIn Failed to validate password", e);
                     return false;
                 }
 
