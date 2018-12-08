@@ -16,13 +16,13 @@ namespace Architecture_Reminder.Models
         internal Reminder Reminder
         {
             get { return _reminder; }
-            private set
+            set
             {
                 _reminder = value;
                 OnPropertyChanged();
             }
         }
-
+        
         public DateTime Date
         {
             get { return _reminder.RemDate; }
@@ -85,7 +85,7 @@ namespace Architecture_Reminder.Models
 
         public int CompareTo(ReminderUIModel other)
         {
-            return this.Reminder.CompareTo(other.Reminder);
+            return Reminder.CompareTo(other.Reminder);
         }
         #endregion
         #endregion

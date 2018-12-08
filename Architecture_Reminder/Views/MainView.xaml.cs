@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using Architecture_Reminder.ViewModels;
 using System.Threading;
 using System;
@@ -12,7 +11,7 @@ namespace Architecture_Reminder.Views
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class MainView
     {
         private int _countChildren;
         private MainViewViewModel _mainViewViewModel;
@@ -43,8 +42,8 @@ namespace Architecture_Reminder.Views
                 {
                     _currentReminderConfigurationView =
                         new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
-                    DBModels.Reminder curr_rem = new DBModels.Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
-                    if (_mainViewViewModel.Reminders.ElementAt(i).CompareTo(curr_rem) <= 0)
+                    DBModels.Reminder currRem = new DBModels.Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
+                    if (_mainViewViewModel.Reminders.ElementAt(i).CompareTo(currRem) <= 0)
                     {
                         _currentReminderConfigurationView.DatePicker.IsEnabled = false;
                         _currentReminderConfigurationView.ComboBoxHours.IsEnabled = false;

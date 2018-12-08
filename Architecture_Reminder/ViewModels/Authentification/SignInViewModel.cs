@@ -70,11 +70,6 @@ namespace Architecture_Reminder.ViewModels.Authentification
 
         #endregion
 
-        #region ConstructorAndInit
-        internal SignInViewModel()
-        {
-        }
-        #endregion
 
         private void CloseExecute(object obj)
         {

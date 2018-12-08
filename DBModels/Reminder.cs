@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Migrations.Model;
 using System.Data.Entity.ModelConfiguration;
 using System.Runtime.Serialization;
 

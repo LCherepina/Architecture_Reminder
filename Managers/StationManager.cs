@@ -8,13 +8,10 @@ namespace Architecture_Reminder.Managers
 {
     public static class StationManager
     {
-
-        private static User _currentUser;
-
         public static User CurrentUser
         {
-            get { return _currentUser; }
-            set { _currentUser = value; }
+            get;
+            set;
         }
 
         static StationManager()
@@ -43,20 +40,14 @@ namespace Architecture_Reminder.Managers
             if (userCandidate == null)
                 Logger.Log("Failed to relogin last user");
             else
-                //CurrentUser = userCandidate;
                 CurrentUser = userCandidate;
-        }
-
-        public static void Initialize()
-        {
-
         }
 
         public static void CloseApp()
         {
             foreach (Reminder r in CurrentUser.Reminders)
                 DBManager.SaveReminder(r);
-            MessageBox.Show("ShutDown");
+            MessageBox.Show(@"ShutDown");
             Environment.Exit(1);
         }
     }

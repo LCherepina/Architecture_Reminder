@@ -1,5 +1,4 @@
 ﻿using Architecture_Reminder.Tools;
-using System;
 
 namespace Architecture_Reminder.Managers
 {
@@ -34,8 +33,6 @@ namespace Architecture_Reminder.Managers
                 }
             }
         }
-
-        public object Logger { get; private set; }
         #endregion
         /// <summary>
         /// Current NavigationModel field

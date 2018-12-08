@@ -8,7 +8,6 @@ using Architecture_Reminder.Tools;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
 using Architecture_Reminder.DBModels;
 using Architecture_Reminder.Managers;
 using Architecture_Reminder.Annotations;
@@ -106,13 +105,13 @@ namespace Architecture_Reminder.ViewModels
         private async void FillReminders()
         {
             _myThreads = new List<Thread>();
-            var result = await Task.Run(() =>
+            await Task.Run(() =>
             {
                 Reminders = new List<Reminder>();
-                Reminder curr_rem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
+                Reminder currRem = new Reminder(DateTime.Today.Date, DateTime.Now.Hour, DateTime.Now.Minute, "", new User("0", "0", "0", "0", "0"));
                 foreach(var rem in DBManager.GetUserByLogin(StationManager.CurrentUser.Login).Reminders)
                 {
-                    if (rem.CompareTo(curr_rem) < 0)
+                    if (rem.CompareTo(currRem) < 0)
                         rem.IsHappened = true;
 
                     Reminders.Add(rem);
@@ -130,7 +129,7 @@ namespace Architecture_Reminder.ViewModels
         private async void SortReminderExecute(object obj)
         {
             LoaderManager.Instance.ShowLoader();
-            var result = await Task.Run(() =>
+            await Task.Run(() =>
             {
                 Reminders.Sort();
                 return true;
@@ -149,12 +148,12 @@ namespace Architecture_Reminder.ViewModels
                 var today = DateTime.Today.Date;
                 if (hourNow != 23)
                 {
-                    reminder = new Reminder(today, hourNow + 1, DateTime.Now.Minute, "Reminder",
+                    reminder = new Reminder(today, hourNow + 1, DateTime.Now.Minute, "",
                         StationManager.CurrentUser);
                 }
                 else
                 {
-                    reminder = new Reminder(today.AddDays(1), 00, DateTime.Now.Minute, "Reminder",
+                    reminder = new Reminder(today.AddDays(1), 00, DateTime.Now.Minute, "",
                         StationManager.CurrentUser);
                 }
                 Reminders.Add(reminder);
@@ -231,7 +230,7 @@ namespace Architecture_Reminder.ViewModels
 
         private void RunReminderExecute(Guid g)
         {
-            Thread myThread = new Thread(new ParameterizedThreadStart(CheckIfRun));
+            Thread myThread = new Thread(CheckIfRun);
             myThread.IsBackground = true;
             myThread.Start(g);
             _myThreads.Add(myThread);
@@ -247,7 +246,14 @@ namespace Architecture_Reminder.ViewModels
                 
                 if (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin == DateTime.Now.Minute)
                 {
-                    string message = r.RemTimeHour + " : " + r.RemTimeMin + "                                     " +
+                    string minutes = r.RemTimeMin +"";
+                    string hours = r.RemTimeHour + "";
+                    if (r.RemTimeMin < 10)
+                        minutes = "0" + r.RemTimeMin;
+                    if (r.RemTimeHour < 10)
+                        hours = "0" + r.RemTimeHour;
+                       
+                    string message = hours + " : " + minutes + "                                     " +
                                      +r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n"+ "__________________________________________" + "\n" + "\n" + r.RemText;
                     string caption = "Reminder";
                     MessageBox.Show(message,caption,MessageBoxButton.OK);

@@ -22,7 +22,7 @@ namespace Architecture_Reminder
 
         public ContentControl ContentControl
         {
-            get { return _contentControl; }
+            get { return ContentC; }
         }
     }
 }

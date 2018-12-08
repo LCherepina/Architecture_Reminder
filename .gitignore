@@ -52,3 +52,5 @@ Architecture_Reminder/obj/Debug/Tools/Controls/LabelAndPasswordControl.g.i.cs
 DBAdapter/obj/Debug/DBAdapter.csproj.FileListAbsolute.txt
 DBAdapter/ReminderDBContext.cs
 DBModels/obj/Debug/DBModels.csproj.FileListAbsolute.txt
+*.dll
+*.pdb

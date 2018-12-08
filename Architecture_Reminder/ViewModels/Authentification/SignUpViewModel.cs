@@ -97,11 +97,6 @@ namespace Architecture_Reminder.ViewModels.Authentification
         }
         #endregion
 
-        #region ConstructorAndInit
-        internal SignUpViewModel()
-        {
-        }
-        #endregion
 
         private async void SignUpExecute(object obj)
         {
