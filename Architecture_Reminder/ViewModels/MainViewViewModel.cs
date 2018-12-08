@@ -73,12 +73,10 @@ namespace Architecture_Reminder.ViewModels
             get
             {
                 return _reminders;
-                //return StationManager.CurrentUser.Reminders;
             }
             set
             {
                 _reminders = value;
-                //StationManager.CurrentUser.Reminders = value;
             }
         }
 
@@ -211,6 +209,7 @@ namespace Architecture_Reminder.ViewModels
             {
                 foreach (Thread t in _myThreads)
                     t.Abort();
+
                 StationManager.CurrentUser = null;
               
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
@@ -294,7 +293,6 @@ namespace Architecture_Reminder.ViewModels
         internal virtual void OnReminderChanged(Reminder reminder)
         {
             ReminderChanged?.Invoke(reminder);
-            //ReminderChanged(reminder);
         }
         #endregion
         #region PropertyChanged
