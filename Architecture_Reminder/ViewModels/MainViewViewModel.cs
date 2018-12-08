@@ -251,9 +251,14 @@ namespace Architecture_Reminder.ViewModels
                                      +r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n"+ "__________________________________________" + "\n" + "\n" + r.RemText;
                     string caption = "Reminder";
                     MessageBox.Show(message,caption,MessageBoxButton.OK);
-
-
-                    GetReminderByGuid((Guid)g).IsHappened = true;
+                    
+                    foreach(var rem in Reminders)
+                        if(rem.Guid == (Guid) g)
+                        {
+                            rem.IsHappened = true;
+                            DBManager.SaveReminder(rem);
+                            break;
+                        }
                     Logger.Log("Reminder happened");
                     OnPropertyChanged();
                     return;
@@ -261,7 +266,13 @@ namespace Architecture_Reminder.ViewModels
                 else if (r.RemDate < DateTime.Today.Date || (r.RemDate == DateTime.Today.Date && r.RemTimeHour < DateTime.Now.Hour)
                || (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin < DateTime.Now.Minute))
                 {
-                    GetReminderByGuid((Guid)g).IsHappened = true;
+                    foreach (var rem in Reminders)
+                        if (rem.Guid == (Guid)g)
+                        {
+                            rem.IsHappened = true;
+                            DBManager.SaveReminder(rem);
+                            break;
+                        }
                     OnPropertyChanged();
                     return;
                 }

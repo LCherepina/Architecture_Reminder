@@ -17,6 +17,7 @@ namespace Architecture_Reminder.Migrations
                         RemTimeMin = c.Int(nullable: false),
                         RemText = c.String(nullable: false),
                         UserGuid = c.Guid(nullable: false),
+                        IsHappened = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Guid)
                 .ForeignKey("dbo.Users", t => t.UserGuid, cascadeDelete: true)
