@@ -146,15 +146,15 @@ namespace Architecture_Reminder.ViewModels
             {
                 Reminder reminder;
                 int hourNow = DateTime.Now.Hour;
-
+                var today = DateTime.Today.Date;
                 if (hourNow != 23)
                 {
-                    reminder = new Reminder(DateTime.Today.Date, hourNow + 1, DateTime.Now.Minute, "Reminder",
+                    reminder = new Reminder(today, hourNow + 1, DateTime.Now.Minute, "Reminder",
                         StationManager.CurrentUser);
                 }
                 else
                 {
-                    reminder = new Reminder(DateTime.Today.Date, 00, DateTime.Now.Minute, "Reminder",
+                    reminder = new Reminder(today.AddDays(1), 00, DateTime.Now.Minute, "Reminder",
                         StationManager.CurrentUser);
                 }
                 Reminders.Add(reminder);

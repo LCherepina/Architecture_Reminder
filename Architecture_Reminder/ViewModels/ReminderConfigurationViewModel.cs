@@ -25,9 +25,16 @@ namespace Architecture_Reminder.ViewModels
             get { return _currentReminder.RemDate.Date; }
             set
             {
-                _currentReminder.RemDate = value;
+                if (((_currentReminder.RemTimeHour >= DateTime.Now.Hour && _currentReminder.RemTimeMin > DateTime.Now.Minute)  
+                     && value == DateTime.Today) ||
+                    value > DateTime.Today)
+                {
+                    _currentReminder.RemDate = value;
+                    OnPropertyChanged();
+                }
+
                 DBManager.SaveReminder(_currentReminder);
-                OnPropertyChanged();
+               
             }
         }
 
