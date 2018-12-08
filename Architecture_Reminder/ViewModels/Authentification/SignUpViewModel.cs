@@ -135,6 +135,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
                 MessageBox.Show("User with login " + _login + " is successfuly created!");
                 Logger.Log("SignUp New user created");
+                SerializationManager.Serialize(StationManager.CurrentUser, FileFolderHelper.LastUserFilePath);
                 return 0;
             });
             LoaderManager.Instance.HideLoader();

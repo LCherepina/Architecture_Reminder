@@ -108,7 +108,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 if (currentUser == null)
                 {
                     MessageBox.Show("User with login " + _login + " doesn't exist!");
-                    Logger.Log("SignIn User doesnt exist");
+                    Logger.Log("SignIn User doesn't exist");
                     return false;
                 }
 
@@ -129,9 +129,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
 
                 StationManager.CurrentUser = currentUser;
-        //        StationManager.CurrentUser.LastLoginDate = DateTime.Now;
-      //          StationManager.CurrentUser.LogOut = false;
-      //          DBManager.UpdateUser(StationManager.CurrentUser);
+                SerializationManager.Serialize(StationManager.CurrentUser, FileFolderHelper.LastUserFilePath);
                 return true;
             });
             _login = "";

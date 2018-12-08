@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
 using Architecture_Reminder.Tools;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using Architecture_Reminder.DBModels;
 using Architecture_Reminder.Managers;
 using Architecture_Reminder.Annotations;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Architecture_Reminder.ViewModels
 {
     class MainViewViewModel : INotifyPropertyChanged
     {
-        #region Fields
 
-        private int _indexSelected;
+        #region Fields
         private Reminder _selectedReminder;
         private List<Reminder> _reminders;
         private List<Thread> _myThreads;
@@ -81,15 +83,7 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
-        public int SelectedReminderIndex
-        {
-            get { return _indexSelected; }
-            set
-            {
-                _indexSelected = value;
-
-            }
-        }
+        public int SelectedReminderIndex { get; set; }
 
         public Reminder SelectedReminder { get { return _selectedReminder; } set { _selectedReminder = value; } }
         #endregion
@@ -148,32 +142,43 @@ namespace Architecture_Reminder.ViewModels
         private async void AddReminderExecute(object o)
         {
             LoaderManager.Instance.ShowLoader();
-            var result = await Task.Run(() =>
+            await Task.Run(() =>
             {
-                Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
-                    StationManager.CurrentUser);
+                Reminder reminder;
+                int hourNow = DateTime.Now.Hour;
+
+                if (hourNow != 23)
+                {
+                    reminder = new Reminder(DateTime.Today.Date, hourNow + 1, DateTime.Now.Minute, "Reminder",
+                        StationManager.CurrentUser);
+                }
+                else
+                {
+                    reminder = new Reminder(DateTime.Today.Date, 00, DateTime.Now.Minute, "Reminder",
+                        StationManager.CurrentUser);
+                }
                 Reminders.Add(reminder);
                 SelectedReminder = reminder;
                 DBManager.AddReminder(reminder);
-                //Reminders.Sort();
                 RunReminderExecute(reminder.Guid);
                 return true;
             });
             LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
-            Logger.Log("Create new reminder");
+            Logger.Log("Created new reminder");
+            
+
         }
 
         private async void DeleteReminderExecute(KeyEventArgs args)
         {
             LoaderManager.Instance.ShowLoader();
-            var result = await Task.Run(() =>
+             await Task.Run(() =>
             {
                 if (Reminders.Count == 0) return false;
                 if (SelectedReminderIndex < 0) return false;
                 DBManager.DeleteReminder(Reminders.ElementAt(SelectedReminderIndex));
                 Reminders.RemoveAt(SelectedReminderIndex);
-                //Reminders.Sort();
                 return true;
             });
             LoaderManager.Instance.HideLoader();
@@ -183,18 +188,32 @@ namespace Architecture_Reminder.ViewModels
 
         private async void LogOutExecute(object obj)
         {
+            
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
-                Thread.Sleep(100);
-                StationManager.CurrentUser = null;
-                return true;
+                try
+                {
+                    if (System.IO.File.Exists(FileFolderHelper.LastUserFilePath))
+                    {
+                        System.IO.File.Delete(FileFolderHelper.LastUserFilePath);   
+                    }
+                   
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log($"Update user exception ", ex);
+                    return false;
+                }
             });
             LoaderManager.Instance.HideLoader();
             if (result)
             {
                 foreach (Thread t in _myThreads)
                     t.Abort();
+                StationManager.CurrentUser = null;
+              
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
             }
         }
@@ -208,29 +227,6 @@ namespace Architecture_Reminder.ViewModels
             }
             return null;
         }
-        
-        /*
-        private void DeleteReminderByGuid(Guid g)
-        {
-            Reminder r = GetReminderByGuid(g);
-            if (r != null)
-            {
-                int i = -1;
-                int n = -1;
-                foreach (var rem in Reminders)
-                {
-                    n++;
-                    if (rem.Guid == g)
-                    {
-                        i = n;
-                        break;
-                    }
-                }
-                Reminders.RemoveAt(i);
-                DBManager.DeleteReminder(r);
-            }
-            OnPropertyChanged(); 
-        }*/
 
 
         private void RunReminderExecute(Guid g)
@@ -251,11 +247,14 @@ namespace Architecture_Reminder.ViewModels
                 
                 if (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin == DateTime.Now.Minute)
                 {
-                    MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + "\n" +
-                        + r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n " + r.RemText );
+                    string message = r.RemTimeHour + " : " + r.RemTimeMin + "                                     " +
+                                     +r.RemDate.Day + "." + r.RemDate.Month + "." + r.RemDate.Year + "\n"+ "__________________________________________" + "\n" + "\n" + r.RemText;
+                    string caption = "Reminder";
+                    MessageBox.Show(message,caption,MessageBoxButton.OK);
+
+
                     GetReminderByGuid((Guid)g).IsHappened = true;
                     Logger.Log("Reminder happened");
-                    //DeleteReminderByGuid((Guid)g);
                     OnPropertyChanged();
                     return;
                 }
@@ -264,19 +263,11 @@ namespace Architecture_Reminder.ViewModels
                 {
                     GetReminderByGuid((Guid)g).IsHappened = true;
                     OnPropertyChanged();
-                    //DeleteReminderByGuid((Guid)g);
                     return;
                 }
                 Thread.Sleep(1000);
             }
         }
-
-        /*public void SaveRemindersToDB()
-        {
-            foreach (Reminder r in Reminders)
-                DBManager.SaveReminder(r);
-        }*/
-
 
         #region EventsAndHandlers
         #region Loader
