@@ -13,7 +13,7 @@ namespace Architecture_Reminder.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201812081906055_ReminderDBMigration"; }
+            get { return "201812051807334_ReminderDBMigration"; }
         }
         
         string IMigrationMetadata.Source

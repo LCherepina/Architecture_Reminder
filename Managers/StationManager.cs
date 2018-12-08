@@ -9,12 +9,12 @@ namespace Architecture_Reminder.Managers
     public static class StationManager
     {
 
-        private static User _currentUser;
+    //    private static User _currentUser;
 
         public static User CurrentUser
         {
-            get { return _currentUser; }
-            set { _currentUser = value; }
+            get;
+            set;
         }
 
         static StationManager()

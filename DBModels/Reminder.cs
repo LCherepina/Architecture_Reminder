@@ -140,9 +140,6 @@ namespace Architecture_Reminder.DBModels
                 Property(s => s.RemText)
                     .HasColumnName("RemText")
                     .IsRequired();
-                Property(s => s.IsHappened)
-                    .HasColumnName("IsHappened")
-                    .IsRequired();
             }
         }
         #endregion
