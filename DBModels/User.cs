@@ -109,7 +109,7 @@ namespace Architecture_Reminder.DBModels
                 string res = Encrypting.Encrypt(password);
                 return _password.CompareTo(res) == 0;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
