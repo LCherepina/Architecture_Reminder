@@ -8,9 +8,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Architecture_Reminder.Managers
 {
-    internal static class SerializationManager
+    public static class SerializationManager
     {
-        internal static void Serialize<TObject>(TObject obj, string filePath)
+        public static void Serialize<TObject>(TObject obj, string filePath)
         {
             try
             {

@@ -9,48 +9,19 @@ namespace Architecture_Reminder.Managers
     public static class StationManager
     {
 
-        private static User _currentUser;
+    //    private static User _currentUser;
 
-        public static User CurrentUser { get { return _currentUser; } set { _currentUser = value; } }
+        public static User CurrentUser
+        {
+            get;
+            set;
+        }
 
         static StationManager()
-        {
-            //   _currentUser = new User("","","","","");
-            // _currentUser = DBManager.GetLastUser();
-            //DeserializeLastUser();
-
-            //    _currentUser = GetLastUser();
-            /*    if (_currentUser != null)
-                {
-                    _currentUser.LastLoginDate = DateTime.Now;
-                    DBManager.UpdateUser(_currentUser);
-
-                }
-
-                Console.WriteLine(_currentUser);
-                */
+        { 
 
             DeserializeLastUser();
         }
-
-       /*      private static User GetLastUser()
-        {
-            User userCandidate;
-            userCandidate = null;
-            try
-            {
-               //   userCandidate = DBManager.GetLastUser();
-            }
-            catch (Exception e)
-            {
-                userCandidate = null;
-               
-            }
-            
-
-            return userCandidate;
-        }
-        */
 
         private static void DeserializeLastUser()
         {

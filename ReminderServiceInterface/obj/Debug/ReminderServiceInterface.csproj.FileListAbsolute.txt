@@ -23,3 +23,17 @@ C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInter
 C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csprojResolveAssemblyReference.cache
 C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.dll
 C:\Users\Anna_Shkuta\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.pdb
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Architecture_Reminder.ServiceInterface.pdb
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\DBModels.dll
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.dll
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Tools.dll
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\DBModels.pdb
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\DBModels.dll.config
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\EntityFramework.xml
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\bin\Debug\Tools.pdb
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csprojResolveAssemblyReference.cache
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csproj.CoreCompileInputs.cache
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\ReminderServiceInterface.csproj.CopyComplete
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.dll
+C:\Users\Liza\Documents\GitHub\Architecture_Reminder\ReminderServiceInterface\obj\Debug\Architecture_Reminder.ServiceInterface.pdb

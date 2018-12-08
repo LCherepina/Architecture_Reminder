@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignWidth="300"
+             d:DesignWidth="430"
 >
     <Grid>
 
@@ -17,7 +17,7 @@
 
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            <ColumnDefinition MinWidth="210"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DatePicker  Name="DatePicker" Focusable = "False" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Now}"   SelectedDate="{Binding RemDate , UpdateSourceTrigger=PropertyChanged}" ></DatePicker>
         <ComboBox Name="ComboBoxHours" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ItemsSource="{Binding FillHours}" SelectedIndex="{Binding RemTimeHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,Delay=5}">
@@ -28,7 +28,8 @@
 
         </ComboBox>
         <TextBox Name="Text" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0 " Height="60" TextWrapping="Wrap" AcceptsReturn="True" IsUndoEnabled="True"
-                 Text="{Binding RemText, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                 VerticalScrollBarVisibility="Auto" Text="{Binding RemText, UpdateSourceTrigger=PropertyChanged}">
+        </TextBox>
 
     </Grid>
 </UserControl>
